@@ -5,13 +5,16 @@ Script used for installing all essential packages and enabling certain services.
 import subprocess
 
 command = ['sudo', 'pacman', '-Su']
+command_aur = ['yay', '-Su']
 packages = [
     'alacritty',
     'awesome',
     'cmake',
+    'gimp',
     'git',
     'github-cli',
     'gnome',
+    'okular',
     'ninja',
     'neovim',
     'networkmanager',
@@ -20,12 +23,19 @@ packages = [
     'ripgrep',
     'rust',
     'sddm',
+    'texlive',
+    'texlive-langgerman',
     'unzip',
     'wget',
     'wl-clipboard',
     'xclip',
     'xorg',
     'yarn',
+]
+packages_aur = [
+    'google-chrome',
+    'sddm-sugar-candy',
+    'sddm-sugar-dark',
 ]
 packages_bluetooth = [
     'bluez',
@@ -65,6 +75,10 @@ if select('Install yay?'):
     subprocess.run(['makepkg', '-si'], cwd='yay')
     subprocess.run(['rm', '-drf', 'yay'])
 
+if select('Install aur packages?'):
+    log('Installing aur packages')
+    subprocess.run([*command_aur, *packages_aur])
+
 if select('Bluetooth: Enable bluetooth.service daemon?'):
     log('Bluetooth: Enabling bluetooth.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now',
@@ -76,3 +90,6 @@ if select('Wifi: Disable wpa_supplicant.service and enable iwd.service daemon?')
                    'disable', 'wpa_supplicant.service'])
     log('Wifi: Enabling iwd.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'iwd.service'])
+
+if select('Display manager: Set default theme to sugar-dark?'):
+    log('Display manager: Setting default theme to sugar-dark')
