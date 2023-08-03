@@ -3,17 +3,22 @@ Script used for installing all essential packages and enabling certain services.
 '''
 
 import subprocess
+from auxillary import log, select
 
 command = ['sudo', 'pacman', '-Su']
 command_aur = ['yay', '-Su']
+command_snap = ['sudo', 'snap', 'install']
 packages = [
     'alacritty',
     'awesome',
     'cmake',
+    'firefox',
     'gimp',
     'git',
     'github-cli',
     'gnome',
+    'go',
+    'htop',
     'okular',
     'ninja',
     'neovim',
@@ -25,6 +30,8 @@ packages = [
     'sddm',
     'texlive',
     'texlive-langgerman',
+    'tree',
+    'ttf-firacode-nerd',
     'unzip',
     'wget',
     'wl-clipboard',
@@ -43,18 +50,13 @@ packages_bluetooth = [
     'pulseaudio-alsa',
     'pulseaudio-bluetooth',
 ]
+packages_snap = [
+    'nordpass',
+]
 packages_wifi = [
     'iwd',
+    'dhcpcd',
 ]
-
-
-def log(*values):
-    print('>>', *values)
-
-
-def select(value):
-    log(value, '[y/n]')
-    return True if input() == 'y' else False
 
 
 if select('Install packages?'):
@@ -79,17 +81,28 @@ if select('Install aur packages?'):
     log('Installing aur packages')
     subprocess.run([*command_aur, *packages_aur])
 
+if select('Install snapd?'):
+    log('Installing snapd')
+    subprocess.run(['git', 'clone', 'https://aur.archlinux.org/snapd.git'])
+    subprocess.run(['makepkg', '-si'], cwd='snapd')
+    subprocess.run(['rm', '-drf', 'snapd'])
+    subprocess.run(['sudo', 'systemctl', 'enable', '--now', 'snapd.socket'])
+    subprocess.run(['sudo', 'ln', '-s', '/var/lib/snapd/snap', '/snap'])
+    subprocess.run(['sudo', 'systemctl', 'enable', '--now', 'snapd.apparmor'])
+
+if select('Install snap packages?'):
+    log('Installing snap packages?')
+    subprocess.run([*command_snap, *packages_snap])
+
 if select('Bluetooth: Enable bluetooth.service daemon?'):
     log('Bluetooth: Enabling bluetooth.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now',
                    'enable', 'bluetooth.service'])
 
-if select('Wifi: Disable wpa_supplicant.service and enable iwd.service daemon?'):
-    log('Wifi: Disabling wpa_supplicant.service daemon')
-    subprocess.run(['sudo', 'systemctl', '--now',
-                   'disable', 'wpa_supplicant.service'])
+if select('Wifi: Enable iwd.service daemon?'):
     log('Wifi: Enabling iwd.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'iwd.service'])
 
-if select('Display manager: Set default theme to sugar-dark?'):
-    log('Display manager: Setting default theme to sugar-dark')
+if select('Wifi: Enable dhcpcd.service for all network interfaces?'):
+    log('Wifi: Enabling dhcpcd.service for all network interfaces')
+    subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'dhcpcd.service'])
