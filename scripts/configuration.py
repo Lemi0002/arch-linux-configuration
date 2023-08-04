@@ -16,6 +16,19 @@ def copy_files(files):
         subprocess.run(['cp', file['file_name'], os.path.join(file['output_path'], file['file_name'])],
                     cwd=os.path.join(os.path.dirname(__file__), file['input_path']))
 
+def edit_file(file_name, text, key):
+    lines = None
+
+    with open(file_name, 'r') as file:
+        lines = file.readlines()
+
+    for i, line in enumerate(lines):
+        if key != None and key in line:
+            lines[i] = ''.join([key, text])
+
+    with open(file_name, 'w') as file:
+        file.writelines(lines)
+
 
 def set_sddm_configuration(theme_name):
     log(f'Applying sddm {theme_name} configuration')
@@ -33,6 +46,8 @@ def set_sddm_configuration(theme_name):
     ]
 
     copy_files(files)
+    file = os.path.join(files[0]['output_path'], files[0]['file_name'])
+    edit_file(file, theme_name, 'Current=')
 
 
 def set_xorg_configuration():

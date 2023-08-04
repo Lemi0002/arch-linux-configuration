@@ -1,0 +1,6 @@
+[General]
+Background="Backgrounds/background.jpg"
+ScreenWidth="3840"
+ScreenHeight="2160"
+##AccentColor="#a6b3bb"
+HeaderText=" "
