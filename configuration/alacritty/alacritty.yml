@@ -1,0 +1,28 @@
+window:
+  opacity: 0.95
+
+font:
+  normal:
+    family: FiraCodeNerdFont
+    style: Regular
+
+  bold:
+    family: FiraCodeNerdFont
+    style: Bold
+
+  italic:
+    family: FiraCodeNerdFont
+    style: Italic
+
+  bold_italic:
+    family: FiraCodeNerdFont
+    style: Bold Italic
+
+  size: 10.0
+
+draw_bold_text_with_bright_colors: true
+
+colors:
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'

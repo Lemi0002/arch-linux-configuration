@@ -5,16 +5,19 @@ Script used for configuring all essential packages. Must be run with root privil
 import os
 import subprocess
 from auxillary import log, select, choose
-# import screeninfo
 
 
 def copy_files(files):
     for file in files:
-        if not os.path.isdir(file['output_path']):
-            os.makedirs(file['output_path'])
+        input_path = os.path.expanduser(file['input_path'])
+        output_path = os.path.expanduser(file['output_path'])
+        file_name = file['file_name']
 
-        subprocess.run(['cp', file['file_name'], os.path.join(file['output_path'], file['file_name'])],
-                    cwd=os.path.join(os.path.dirname(__file__), file['input_path']))
+        if not os.path.isdir(output_path):
+            os.makedirs(output_path)
+
+        subprocess.run(['cp', file_name, os.path.join(output_path, file_name)],
+                    cwd=os.path.join(os.path.dirname(__file__), input_path))
 
 def edit_file(file_name, text, key):
     lines = None
@@ -62,9 +65,24 @@ def set_xorg_configuration():
     copy_files(files)
 
 
+def set_alacritty_configuration():
+    input = '../configuration/alacritty'
+    output = '~/.config/alacritty'
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': 'alacritty.yml'},
+    ]
+
+    copy_files(files)
+
+
 if selection := choose('Choose sddm configuration to apply', ['sugar-candy', 'sugar-dark']):
     set_sddm_configuration(selection)
 
 if select('Apply xorg configuration?'):
     log('Applying xord configuration')
     set_xorg_configuration()
+
+if select('Apply alacritty configuration?'):
+    log('Applying alacritty configuration')
+    set_alacritty_configuration()

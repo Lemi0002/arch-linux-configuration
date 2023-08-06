@@ -2,6 +2,7 @@
 Script used for installing all essential packages and enabling certain services.
 '''
 
+import os
 import subprocess
 from auxillary import log, select
 
@@ -21,6 +22,7 @@ packages = [
     'htop',
     'okular',
     'ninja',
+    'neofetch',
     'neovim',
     'networkmanager',
     'npm',
@@ -56,6 +58,11 @@ packages_snap = [
 packages_wifi = [
     'iwd',
     'dhcpcd',
+]
+repositories = [
+    {'url': 'https://github.com/Lemi0002/nvim-configuration', 'path': '~/.config/nvim'},
+    {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers'},
+    {'url': 'https://github.com/alacritty/alacritty-theme.git', 'path': '~/.config/alacritty/themes'},
 ]
 
 
@@ -93,6 +100,12 @@ if select('Install snapd?'):
 if select('Install snap packages?'):
     log('Installing snap packages?')
     subprocess.run([*command_snap, *packages_snap])
+
+if select('Install repositories?'):
+    log('Installing repositories')
+
+    for repository in repositories:
+        subprocess.run(['git', 'clone', repository['url'], os.path.expanduser(repository['path'])])
 
 if select('Bluetooth: Enable bluetooth.service daemon?'):
     log('Bluetooth: Enabling bluetooth.service daemon')
