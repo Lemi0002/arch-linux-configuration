@@ -25,6 +25,7 @@ packages = [
     'neofetch',
     'neovim',
     'networkmanager',
+    'noto-fonts-cjk',
     'npm',
     'python-pip',
     'ripgrep',

@@ -60,6 +60,7 @@ def set_xorg_configuration():
     files = [
         {'input_path': input, 'output_path': output, 'file_name': '00-keyboard.conf'},
         {'input_path': input, 'output_path': output, 'file_name': '20-touchpad.conf'},
+        {'input_path': input, 'output_path': '~', 'file_name': '.Xresources'},
     ]
 
     copy_files(files)
