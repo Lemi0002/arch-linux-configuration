@@ -77,6 +77,17 @@ def set_alacritty_configuration():
     copy_files(files)
 
 
+def set_kitty_configuration():
+    input = '../configuration/kitty'
+    output = '~/.config/kitty'
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': 'kitty.conf'},
+    ]
+
+    copy_files(files)
+
+
 if selection := choose('Choose sddm configuration to apply', ['sugar-candy', 'sugar-dark']):
     set_sddm_configuration(selection)
 
@@ -87,3 +98,7 @@ if select('Apply xorg configuration?'):
 if select('Apply alacritty configuration?'):
     log('Applying alacritty configuration')
     set_alacritty_configuration()
+
+if select('Apply kitty configuration?'):
+    log('Applying kitty configuration')
+    set_kitty_configuration()
