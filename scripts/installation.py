@@ -62,12 +62,10 @@ packages_snap = [
 ]
 packages_wifi = [
     'iwd',
-    'dhcpcd',
 ]
 repositories = [
     {'url': 'https://github.com/Lemi0002/nvim-configuration', 'path': '~/.config/nvim'},
     {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers'},
-    {'url': 'https://github.com/alacritty/alacritty-theme.git', 'path': '~/.config/alacritty/themes'},
 ]
 
 
@@ -120,7 +118,3 @@ if select('Bluetooth: Enable bluetooth.service daemon?'):
 if select('Wifi: Enable iwd.service daemon?'):
     log('Wifi: Enabling iwd.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'iwd.service'])
-
-if select('Wifi: Enable dhcpcd.service for all network interfaces?'):
-    log('Wifi: Enabling dhcpcd.service for all network interfaces')
-    subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'dhcpcd.service'])
