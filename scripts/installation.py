@@ -29,6 +29,8 @@ packages = [
     'npm',
     'okular',
     'picom',
+    'pulseaudio',
+    'pulseaudio-alsa',
     'python-pip',
     'ripgrep',
     'rustup',
@@ -53,7 +55,6 @@ packages_aur = [
 packages_bluetooth = [
     'bluez',
     'bluez-utils',
-    'pulseaudio-alsa',
     'pulseaudio-bluetooth',
 ]
 packages_snap = [
