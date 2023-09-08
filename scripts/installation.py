@@ -17,7 +17,7 @@ packages = [
     'gimp',
     'git',
     'github-cli',
-    'gnome',
+    #'gnome',
     'go',
     'htop',
     'kitty',
@@ -60,9 +60,6 @@ packages_bluetooth = [
 packages_snap = [
     'nordpass',
 ]
-packages_wifi = [
-    'iwd',
-]
 repositories = [
     {'url': 'https://github.com/Lemi0002/nvim-configuration', 'path': '~/.config/nvim'},
     {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers'},
@@ -76,10 +73,6 @@ if select('Install packages?'):
 if select('Install bluetooth packages?'):
     log('Installing bluetooth packages')
     subprocess.run([*command, *packages_bluetooth])
-
-if select('Install wifi packages?'):
-    log('Installing wifi packages')
-    subprocess.run([*command, *packages_wifi])
 
 if select('Install yay?'):
     log('Installing yay')
@@ -100,7 +93,7 @@ if select('Install snapd?'):
     subprocess.run(['sudo', 'ln', '-s', '/var/lib/snapd/snap', '/snap'])
     subprocess.run(['sudo', 'systemctl', 'enable', '--now', 'snapd.apparmor'])
 
-if select('Install snap packages?'):
+if select('Install snap packages? Requires reboot after snapd was installed'):
     log('Installing snap packages?')
     subprocess.run([*command_snap, *packages_snap])
 
@@ -114,7 +107,3 @@ if select('Bluetooth: Enable bluetooth.service daemon?'):
     log('Bluetooth: Enabling bluetooth.service daemon')
     subprocess.run(['sudo', 'systemctl', '--now',
                    'enable', 'bluetooth.service'])
-
-if select('Wifi: Enable iwd.service daemon?'):
-    log('Wifi: Enabling iwd.service daemon')
-    subprocess.run(['sudo', 'systemctl', '--now', 'enable', 'iwd.service'])
