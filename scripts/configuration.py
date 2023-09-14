@@ -7,10 +7,17 @@ import subprocess
 from auxillary import log, select, choose
 
 
+user = os.getenv('SUDO_USER')
+if user is None:
+    user = os.getenv('USER', 'root')
+
+path_user = os.path.join('/home', user)
+
+
 def copy_files(files):
     for file in files:
-        input_path = os.path.expanduser(file['input_path'])
-        output_path = os.path.expanduser(file['output_path'])
+        input_path = file['input_path']
+        output_path = file['output_path']
         file_name = file['file_name']
 
         if not os.path.isdir(output_path):
@@ -60,7 +67,7 @@ def set_xorg_configuration():
     files = [
         {'input_path': input, 'output_path': output, 'file_name': '00-keyboard.conf'},
         {'input_path': input, 'output_path': output, 'file_name': '20-touchpad.conf'},
-        {'input_path': input, 'output_path': '~', 'file_name': '.Xresources'},
+        {'input_path': input, 'output_path': path_user, 'file_name': '.Xresources'},
     ]
 
     copy_files(files)
@@ -68,7 +75,7 @@ def set_xorg_configuration():
 
 def set_alacritty_configuration():
     input = '../configuration/alacritty'
-    output = '~/.config/alacritty'
+    output = os.path.join(path_user, '.config/alacritty')
 
     files = [
         {'input_path': input, 'output_path': output, 'file_name': 'alacritty.yml'},
@@ -79,7 +86,7 @@ def set_alacritty_configuration():
 
 def set_kitty_configuration():
     input = '../configuration/kitty'
-    output = '~/.config/kitty'
+    output = os.path.join(path_user, '.config/kitty')
 
     files = [
         {'input_path': input, 'output_path': output, 'file_name': 'kitty.conf'},
@@ -90,7 +97,7 @@ def set_kitty_configuration():
 
 def set_awesome_configuration():
     input = '../configuration/awesome'
-    output = '~/.config/awesome'
+    output = os.path.join(path_user, '.config/awesome')
 
     files = [
         {'input_path': input, 'output_path': output, 'file_name': 'rc.lua'},
