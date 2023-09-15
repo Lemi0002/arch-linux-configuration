@@ -41,7 +41,6 @@ def edit_file(file_name, text, key):
 
 
 def set_sddm_configuration(theme_name):
-    log(f'Applying sddm {theme_name} configuration')
     sddm_input = '../configuration/sddm'
     sddm_output = '/etc/sddm.conf.d'
     theme_input = os.path.join('../configuration/sddm', theme_name)
@@ -105,6 +104,16 @@ def set_awesome_configuration():
 
     copy_files(files)
 
+def set_picom_configuration():
+    input = '../configuration/picom'
+    output = os.path.join(path_user, '.config/picom')
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': 'picom.conf'},
+    ]
+
+    copy_files(files)
+
 def set_backlight_rule(rule_name):
     input = '../configuration/rules'
     output = '/etc/udev/rules.d'
@@ -116,10 +125,11 @@ def set_backlight_rule(rule_name):
     copy_files(files)
 
 if selection := choose('Choose sddm configuration to apply', ['sugar-candy', 'sugar-dark']):
+    log(f'Applying sddm {selection} configuration')
     set_sddm_configuration(selection)
 
 if select('Apply xorg configuration?'):
-    log('Applying xord configuration')
+    log('Applying xorg configuration')
     set_xorg_configuration()
 
 if select('Apply alacritty configuration?'):
@@ -134,5 +144,10 @@ if select('Apply awesome configuration?'):
     log('Applying awesome configuration')
     set_awesome_configuration()
 
+if select('Apply picom configuration?'):
+    log('Applying picom configuration')
+    set_picom_configuration()
+
 if selection := choose('Choose backlight rule to apply', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
+    log(f'Applying {selection} rule')
     set_backlight_rule(selection)
