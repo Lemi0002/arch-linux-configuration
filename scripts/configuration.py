@@ -105,6 +105,15 @@ def set_awesome_configuration():
 
     copy_files(files)
 
+def set_backlight_rule(rule_name):
+    input = '../configuration/rules'
+    output = '/etc/udev/rules.d'
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': rule_name},
+    ]
+
+    copy_files(files)
 
 if selection := choose('Choose sddm configuration to apply', ['sugar-candy', 'sugar-dark']):
     set_sddm_configuration(selection)
@@ -124,3 +133,6 @@ if select('Apply kitty configuration?'):
 if select('Apply awesome configuration?'):
     log('Applying awesome configuration')
     set_awesome_configuration()
+
+if selection := choose('Choose backlight rule to apply', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
+    set_backlight_rule(selection)

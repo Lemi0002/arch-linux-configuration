@@ -1,0 +1,5 @@
+# Set `video` as the owning group for the device with kernel name
+# `acpi_video0` and subsystem `backlight` (i.e. your backlight);
+# give the device's owning user and group read and write permissions
+# and give only read permissions to other users (i.e. 0664).
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", GROUP="video", MODE="0664"

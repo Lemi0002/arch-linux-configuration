@@ -47,6 +47,7 @@ packages = [
     'yarn',
 ]
 packages_aur = [
+    'backlight_control',
     'google-chrome',
     'gtkterm',
     'sddm-sugar-candy',
