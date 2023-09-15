@@ -1,5 +1,6 @@
 '''
-Script used for configuring all essential packages. Must be run with root privileges.
+Script used for configuring all essential packages. SUDO priviliges are required for some configurations.
+If priviliges are not required SUDO must not be used.
 '''
 
 import os
@@ -24,7 +25,8 @@ def copy_files(files):
             os.makedirs(output_path)
 
         subprocess.run(['cp', file_name, os.path.join(output_path, file_name)],
-                    cwd=os.path.join(os.path.dirname(__file__), input_path))
+                       cwd=os.path.join(os.path.dirname(__file__), input_path))
+
 
 def edit_file(file_name, text, key):
     lines = None
@@ -104,6 +106,7 @@ def set_awesome_configuration():
 
     copy_files(files)
 
+
 def set_picom_configuration():
     input = '../configuration/picom'
     output = os.path.join(path_user, '.config/picom')
@@ -113,6 +116,7 @@ def set_picom_configuration():
     ]
 
     copy_files(files)
+
 
 def set_backlight_rule(rule_name):
     input = '../configuration/rules'
@@ -124,11 +128,12 @@ def set_backlight_rule(rule_name):
 
     copy_files(files)
 
-if selection := choose('Choose sddm configuration to apply', ['sugar-candy', 'sugar-dark']):
+
+if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
     log(f'Applying sddm {selection} configuration')
     set_sddm_configuration(selection)
 
-if select('Apply xorg configuration?'):
+if select('Apply xorg configuration? SUDO is required.'):
     log('Applying xorg configuration')
     set_xorg_configuration()
 
@@ -148,6 +153,6 @@ if select('Apply picom configuration?'):
     log('Applying picom configuration')
     set_picom_configuration()
 
-if selection := choose('Choose backlight rule to apply', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
+if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
     log(f'Applying {selection} rule')
     set_backlight_rule(selection)
