@@ -96,17 +96,6 @@ def set_kitty_configuration():
     copy_files(files)
 
 
-def set_awesome_configuration():
-    input = '../configuration/awesome'
-    output = os.path.join(path_user, '.config/awesome')
-
-    files = [
-        {'input_path': input, 'output_path': output, 'file_name': 'rc.lua'},
-    ]
-
-    copy_files(files)
-
-
 def set_picom_configuration():
     input = '../configuration/picom'
     output = os.path.join(path_user, '.config/picom')
@@ -144,10 +133,6 @@ if select('Apply alacritty configuration?'):
 if select('Apply kitty configuration?'):
     log('Applying kitty configuration')
     set_kitty_configuration()
-
-if select('Apply awesome configuration?'):
-    log('Applying awesome configuration')
-    set_awesome_configuration()
 
 if select('Apply picom configuration?'):
     log('Applying picom configuration')
