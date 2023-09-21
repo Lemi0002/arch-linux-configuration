@@ -34,6 +34,7 @@ packages = [
     'python-pip',
     'ripgrep',
     'rustup',
+    'samba',
     'sddm',
     'texlive',
     'texlive-langgerman',
