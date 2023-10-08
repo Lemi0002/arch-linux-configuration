@@ -107,6 +107,17 @@ def set_picom_configuration():
     copy_files(files)
 
 
+def set_rofi_configuration():
+    input = '../configuration/rofi'
+    output = os.path.join(path_user, '.config/rofi')
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': 'config.rasi'},
+    ]
+
+    copy_files(files)
+
+
 def set_backlight_rule(rule_name):
     input = '../configuration/rules'
     output = '/etc/udev/rules.d'
@@ -121,6 +132,10 @@ def set_backlight_rule(rule_name):
 if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
     log(f'Applying sddm {selection} configuration')
     set_sddm_configuration(selection)
+
+if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
+    log(f'Applying {selection} rule')
+    set_backlight_rule(selection)
 
 if select('Apply xorg configuration? SUDO is required.'):
     log('Applying xorg configuration')
@@ -138,6 +153,6 @@ if select('Apply picom configuration?'):
     log('Applying picom configuration')
     set_picom_configuration()
 
-if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
-    log(f'Applying {selection} rule')
-    set_backlight_rule(selection)
+if select('Apply rofi configuration?'):
+    log('Applying rofi configuration')
+    set_rofi_configuration()

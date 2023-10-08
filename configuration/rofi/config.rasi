@@ -1,0 +1,114 @@
+configuration {
+    dpi: 180;
+    font: "FiraCodeNerdFont 10";
+    combi-modes: [ window, drun, ssh ];
+    kb-cancel: "Escape,Control+c";
+}
+
+* {
+    bg0: #131313;
+    bg1: #292929;
+    bg2: #555555;
+
+    fg0: #bbbbbb;
+    fg1: #ffffff;
+
+    hl0: #78573a;
+    hl1: #7b4d47;
+    hl2: #714857;
+    hl3: #5c4861;
+    hl4: #434961;
+
+    radius0: 8px;
+    radius1: 16px;
+}
+
+window {
+    location: center;
+    border: 0px;
+    border-radius: @radius1;
+    background-color: @bg0;
+}
+
+mainbox {
+    padding: 12px;
+}
+
+inputbar {
+    padding: 8px 16px;
+    spacing: 8px;
+    border: 2px;
+    border-radius: @radius0;
+    border-color: @hl0;
+    text-color: @fg1;
+    background-color: @bg1;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: inherit;
+}
+
+entry {
+    text-color: inherit;
+    placeholder: "Search";
+    placeholder-color: @fg0;
+}
+
+message {
+    margin: 12px 0px 0px;
+    border: 2px;
+    border-radius: @radius0;
+    border-color: @hl2;
+    background-color: @bg1;
+    children: [ textbox ];
+}
+
+textbox {
+    padding: 8px 12px;
+    text-color: @fg1;
+    background-color: inherit;
+}
+
+scrollbar {
+    background-color: @bg0;
+    handle-color: @hl0;
+}
+
+listview {
+    margin: 12px 0px 0px;
+    lines: 12;
+    columns: 1;
+    fixed-height: true;
+    border: 0px;
+}
+
+element {
+    padding: 8px 16px;
+    spacing: 10px;
+    border: 0px;
+    border-radius: @radius0;
+}
+
+element normal.active, element normal.normal, element alternate.active, element alternate.normal {
+    background-color: @bg1;
+}
+
+element selected.active, element selected.normal {
+    background-color: @bg2;
+}
+
+element-text normal.active, element-text alternate.active {
+    text-color: @hl2;
+    background-color: @bg1;
+}
+
+element-text normal.normal, element-text alternate.normal {
+    text-color: @fg0;
+    background-color: @bg1;
+}
+
+element-text selected.active, element-text selected.normal {
+    text-color: @fg1;
+    background-color: @bg2;
+}
