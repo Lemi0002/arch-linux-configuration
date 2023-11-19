@@ -70,7 +70,7 @@ packages_snap = [
 ]
 repositories = [
     {'url': 'https://github.com/Lemi0002/nvim-configuration', 'path': '~/.config/nvim'},
-    {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers'},
+    {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers-dwt'},
 ]
 
 
