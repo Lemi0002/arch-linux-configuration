@@ -51,6 +51,7 @@ packages = [
     'xclip',
     'xorg',
     'yarn',
+    'zip',
 ]
 packages_aur = [
     'backlight_control',
