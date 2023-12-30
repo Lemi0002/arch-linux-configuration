@@ -1,0 +1,28 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#1d1f21"
+foreground = "#c5c8c6"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "FiraCodeNerdFont"
+style = "Bold"
+
+[font.bold_italic]
+family = "FiraCodeNerdFont"
+style = "Bold Italic"
+
+[font.italic]
+family = "FiraCodeNerdFont"
+style = "Italic"
+
+[font.normal]
+family = "FiraCodeNerdFont"
+style = "Regular"
+
+[window]
+opacity = 0.8

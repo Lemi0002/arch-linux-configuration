@@ -79,7 +79,7 @@ def set_alacritty_configuration():
     output = os.path.join(path_user, '.config/alacritty')
 
     files = [
-        {'input_path': input, 'output_path': output, 'file_name': 'alacritty.yml'},
+        {'input_path': input, 'output_path': output, 'file_name': 'alacritty.toml'},
     ]
 
     copy_files(files)
