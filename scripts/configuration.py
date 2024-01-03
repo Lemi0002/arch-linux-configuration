@@ -42,6 +42,11 @@ def edit_file(file_name, text, key):
         file.writelines(lines)
 
 
+def make_files_executable(files):
+    for file in files:
+        subprocess.run(['chmod', '+x', file])
+
+
 def set_sddm_configuration(theme_name):
     sddm_input = '../configuration/sddm'
     sddm_output = '/etc/sddm.conf.d'
@@ -63,15 +68,19 @@ def set_sddm_configuration(theme_name):
 
 def set_xorg_configuration():
     input = '../configuration/xorg'
-    output = '/etc/X11/xorg.conf.d'
+    configuration_output = '/etc/X11/xorg.conf.d'
+    initialization_output = '/etc/X11/xinit/xinitrc.d'
 
     files = [
-        {'input_path': input, 'output_path': output, 'file_name': '00-keyboard.conf'},
-        {'input_path': input, 'output_path': output, 'file_name': '20-touchpad.conf'},
+        {'input_path': input, 'output_path': configuration_output, 'file_name': '00-keyboard.conf'},
+        {'input_path': input, 'output_path': configuration_output, 'file_name': '20-touchpad.conf'},
+        {'input_path': input, 'output_path': initialization_output, 'file_name': '00-xinitrc.sh'},
         {'input_path': input, 'output_path': path_user, 'file_name': '.Xresources'},
+        {'input_path': input, 'output_path': path_user, 'file_name': '.Xmodmap'},
     ]
 
     copy_files(files)
+    make_files_executable([os.path.join(x['output_path'], x['file_name']) for x in files if x['file_name'].endswith('.sh')])
 
 
 def set_alacritty_configuration():
