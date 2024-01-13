@@ -57,7 +57,6 @@ packages = [
     'zip',
 ]
 packages_aur = [
-    'backlight_control',
     'google-chrome',
     'gtkterm',
     'sddm-sugar-candy',
