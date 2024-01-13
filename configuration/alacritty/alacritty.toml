@@ -26,3 +26,9 @@ style = "Regular"
 
 [window]
 opacity = 0.8
+
+[keyboard]
+bindings = [
+    { key = "u", mods = "Control", action = "ScrollHalfPageUp" },
+    { key = "d", mods = "Control", action = "ScrollHalfPageDown" },
+]
