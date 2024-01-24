@@ -62,6 +62,7 @@ packages_aur = [
     'sddm-sugar-candy',
     'sddm-sugar-dark',
     'ttf-times-new-roman',
+    'zsa-keymapp-bin',
 ]
 packages_bluetooth = [
     'bluez',

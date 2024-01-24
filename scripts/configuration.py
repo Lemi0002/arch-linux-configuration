@@ -137,6 +137,15 @@ def set_backlight_rule(rule_name):
 
     copy_files(files)
 
+def set_zsa_rule():
+    input = '../configuration/rules'
+    output = '/etc/udev/rules.d'
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': '50-zsa.rules'},
+    ]
+
+    copy_files(files)
 
 if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
     log(f'Applying sddm {selection} configuration')
@@ -149,6 +158,10 @@ if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10
 if select('Apply xorg configuration? SUDO is required.'):
     log('Applying xorg configuration')
     set_xorg_configuration()
+
+if select('Apply zsa rules? SUDO is required.'):
+    log('Applying zsa configuration')
+    set_zsa_rule()
 
 if select('Apply alacritty configuration?'):
     log('Applying alacritty configuration')
