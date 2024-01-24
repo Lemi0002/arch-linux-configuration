@@ -1,2 +1,12 @@
 clear lock
-keycode 0x42 = Escape
+keycode 66 = Escape
+keycode 38 = a A a A 1 AE ae
+keycode 39 = s S s S 2 U1E9E ssharp
+keycode 40 = d D d D 3 ETH eth
+keycode 41 = f F f F 4 ordfeminine dstroke
+keycode 42 = g G g G 5 ENG eng
+keycode 43 = h H h H 6 Hstroke hstroke
+keycode 44 = j J j J 7 dead_horn dead_hook
+keycode 45 = k K k K 8 ampersand kra
+keycode 46 = l L l L 9 Lstroke lstroke
+keycode 47 = odiaeresis eacute odiaeresis eacute 0 dead_doubleacute dead_acute
