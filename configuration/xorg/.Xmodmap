@@ -1,5 +1,15 @@
 clear lock
 keycode 66 = Escape
+keycode 24 = q Q q Q at Greek_OMEGA at Greek_OMEGA q Q at Greek_OMEGA
+keycode 25 = w W w W less section U017F section w W U017F section
+keycode 26 = e E e E bracketleft E EuroSign E e E EuroSign E
+keycode 27 = r R r R parenleft registered paragraph registered r R paragraph registered
+keycode 28 = t T t T braceleft Tslash tslash Tslash t T tslash Tslash
+keycode 29 = z Z z Z braceright yen leftarrow yen z Z leftarrow yen
+keycode 30 = u U u U parenright uparrow downarrow uparrow u U downarrow uparrow
+keycode 31 = i I i I bracketright idotless rightarrow idotless i I rightarrow idotless
+keycode 32 = o O o O greater OE oe OE o O oe OE
+keycode 33 = p P p P backslash THORN thorn THORN p P thorn THORN
 keycode 38 = a A a A 1 AE ae
 keycode 39 = s S s S 2 U1E9E ssharp
 keycode 40 = d D d D 3 ETH eth
