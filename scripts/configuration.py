@@ -147,6 +147,17 @@ def set_zsa_rule():
 
     copy_files(files)
 
+def set_nrf_rule():
+    input = '../configuration/rules'
+    output = '/etc/udev/rules.d'
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': '60-nrf.rules'},
+        {'input_path': input, 'output_path': output, 'file_name': '61-nrf-blacklist.rules'},
+    ]
+
+    copy_files(files)
+
 if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
     log(f'Applying sddm {selection} configuration')
     set_sddm_configuration(selection)
@@ -162,6 +173,10 @@ if select('Apply xorg configuration? SUDO is required.'):
 if select('Apply zsa rules? SUDO is required.'):
     log('Applying zsa configuration')
     set_zsa_rule()
+
+if select('Apply nrf rules? SUDO is required.'):
+    log('Applying nrf configuration')
+    set_nrf_rule()
 
 if select('Apply alacritty configuration?'):
     log('Applying alacritty configuration')
