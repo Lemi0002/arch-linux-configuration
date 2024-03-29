@@ -36,6 +36,7 @@ packages = [
     'okular',
     'openconnect',
     'picom',
+    'playerctl',
     'pulseaudio',
     'pulseaudio-alsa',
     'python-pip',
