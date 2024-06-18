@@ -20,6 +20,7 @@ packages = [
     'fcitx5-mozc',
     'firefox',
     'freerdp',
+    'fzf',
     'gimp',
     'git',
     'github-cli',
