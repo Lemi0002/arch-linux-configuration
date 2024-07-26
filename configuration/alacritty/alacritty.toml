@@ -1,9 +1,29 @@
 [colors]
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [colors.primary]
 background = "#1d1f21"
 foreground = "#c5c8c6"
+
+[colors.normal]
+black   = "#181819"
+red     = "#fc5d7c"
+green   = "#9ed072"
+yellow  = "#f39660"
+blue    = "#779ae0"
+magenta = "#b39df3"
+cyan    = "#76cce0"
+white   = "#a7b3be"
+
+[colors.bright]
+black   = "#373b41"
+red     = "#cc667a"
+green   = "#afbd68"
+yellow  = "#f0b173"
+blue    = "#8296bf"
+magenta = "#9d93ba"
+cyan    = "#8cb6bf"
+white   = "#c5c8c6"
 
 [font]
 size = 10.0
