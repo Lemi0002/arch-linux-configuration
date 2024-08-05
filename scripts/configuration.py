@@ -126,6 +126,17 @@ def set_rofi_configuration():
 
     copy_files(files)
 
+def set_bash_configuration():
+    input = '../configuration/bash'
+    output = path_user
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': '.bashrc'},
+        {'input_path': input, 'output_path': output, 'file_name': '.bash-aliases'},
+    ]
+
+    copy_files(files)
+
 
 def set_backlight_rule(rule_name):
     input = '../configuration/rules'
@@ -193,3 +204,7 @@ if select('Apply picom configuration?'):
 if select('Apply rofi configuration?'):
     log('Applying rofi configuration')
     set_rofi_configuration()
+
+if select('Apply bash configuration?'):
+    log('Applying bash configuration')
+    set_bash_configuration()
