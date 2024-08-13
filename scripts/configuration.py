@@ -133,6 +133,7 @@ def set_bash_configuration():
     files = [
         {'input_path': input, 'output_path': output, 'file_name': '.bashrc'},
         {'input_path': input, 'output_path': output, 'file_name': '.bash-aliases'},
+        {'input_path': input, 'output_path': output, 'file_name': '.bash-functions'},
     ]
 
     copy_files(files)

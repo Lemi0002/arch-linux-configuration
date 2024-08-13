@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias cp='cp -i'
@@ -17,3 +19,4 @@ alias s='sudo'
 alias sr='sudo !!'
 alias n='nvim'
 alias sn='sudo -E nvim'
+alias j='jump'

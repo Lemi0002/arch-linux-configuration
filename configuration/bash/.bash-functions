@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function jump() {
+    directory=$(fzf --info=inline-right --walker=dir,hidden)
+
+    if [ -z $directory ]; then
+        return 1
+    fi
+
+    cd $directory
+}
