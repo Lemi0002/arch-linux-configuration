@@ -16,5 +16,5 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-source .bash-aliases
-source .bash-functions
+source ~/.bash-aliases
+source ~/.bash-functions
