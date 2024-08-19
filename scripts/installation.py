@@ -57,6 +57,7 @@ packages = [
     'xclip',
     'xorg',
     'yarn',
+    'yazi',
     'zip',
 ]
 packages_aur = [
