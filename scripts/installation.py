@@ -28,6 +28,7 @@ packages = [
     'htop',
     'inkscape',
     'kitty',
+    'man-pages',
     'neofetch',
     'neovim',
     'networkmanager',
