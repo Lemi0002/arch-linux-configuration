@@ -52,6 +52,7 @@ packages = [
     'texlive-langgerman',
     'tree',
     'ttf-firacode-nerd',
+    'ttf-indic-otf',
     'unzip',
     'wget',
     'wl-clipboard',
@@ -66,6 +67,10 @@ packages_aur = [
     'gtkterm',
     'sddm-sugar-candy',
     'sddm-sugar-dark',
+    'ttf-google-thai',
+    'ttf-khmer',
+    'ttf-lao',
+    'ttf-sil-padauk',
     'ttf-times-new-roman',
     'zsa-keymapp-bin',
 ]
