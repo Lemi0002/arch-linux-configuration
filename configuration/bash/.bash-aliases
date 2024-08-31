@@ -8,7 +8,7 @@ alias fzf='fzf --info=inline-right'
 
 alias gif='git fetch'
 alias gis='git status'
-alias gil='git lg'
+alias gil='git log --graph --pretty=tformat:"%C(auto)%h %C(blue)%ci %C(cyan)%cn %C(reset)%s"'
 alias gid='git diff'
 alias gia='git add'
 alias gir='git restore'
@@ -20,3 +20,9 @@ alias sr='sudo !!'
 alias n='nvim'
 alias sn='sudo -E nvim'
 alias j='jump'
+
+if command -v yazi-patch &> /dev/null; then
+    alias y='yazi-patch'
+else
+    alias y='yazi'
+fi

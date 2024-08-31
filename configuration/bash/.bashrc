@@ -10,6 +10,7 @@ PATH=$PATH:/tools/nordic
 PATH=$PATH:/tools/nordic/nrf-command-line-tools/bin
 PATH=$PATH:/tools/gcc-arm-none-eabi/bin
 PATH=$PATH:~/version-control/arch-linux-scripts
+PATH=$PATH:~/bin
 
 export EDITOR="/usr/bin/nvim"
 export GTK_IM_MODULE=fcitx
