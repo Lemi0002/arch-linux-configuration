@@ -1,5 +1,5 @@
 configuration {
-    dpi: 188;
+    dpi: 192;
     font: "FiraCodeNerdFont 10";
     combi-modes: [ window, drun, ssh ];
     kb-cancel: "Escape,Control+c";
@@ -19,24 +19,24 @@ configuration {
     hl3: #5c4861;
     hl4: #434961;
 
-    border0: 5px;
+    border0: 0.25em;
 
-    padding0: 10px;
-    padding1: 20px;
-    padding2: 0px 20px;
-    padding3: 10px 20px;
+    padding0: 0.5em;
+    padding1: 1em;
+    padding2: 0em 1em;
+    padding3: 0.4em 1em;
 
-    radius0: 10px;
-    radius1: 20px;
+    radius0: 0.5em;
+    radius1: 1em;
 
-    spacing0: 10px;
+    spacing0: 0.5em;
 }
 
 window {
     location: center;
     anchor: north;
     y-offset: -25%;
-    border: 0px;
+    border: 0em;
     border-radius: @radius1;
     background-color: @bg0;
 }
@@ -67,7 +67,7 @@ entry {
 }
 
 message {
-    margin: 12px 0px 0px;
+    margin: 0.5em 0em 0em;
     border: @border0;
     border-radius: @radius0;
     border-color: @hl2;
@@ -82,24 +82,24 @@ textbox {
 }
 
 scrollbar {
-    handle-width: 10px;
+    handle-width: @border0;
     padding: @padding2;
     background-color: @bg0;
     handle-color: @hl0;
 }
 
 listview {
-    margin: 20px 0px 0px;
+    margin: 1em 0em 0em;
     lines: 15;
     columns: 1;
     fixed-height: false;
-    border: 0px;
+    border: 0em;
 }
 
 element {
     padding: @padding3;
     spacing: @spacing0;
-    border: 0px;
+    border: 0em;
     border-radius: @radius0;
 }
 
