@@ -1,0 +1,17 @@
+# Completion settings for tab
+set show-all-if-unmodified on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
+
+# Enable vi like motions
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-cmd-mode-string "\1\e[2 q\2"
+set vi-ins-mode-string "\1\e[6 q\2"
+
+$if mode=vi
+    # set keymap vi-command
+    # Control-l: clear-screen
+    set keymap vi-insert
+    Control-l: clear-screen
+$endif

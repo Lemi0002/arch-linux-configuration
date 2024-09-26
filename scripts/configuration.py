@@ -126,6 +126,18 @@ def set_rofi_configuration():
 
     copy_files(files)
 
+
+def set_readline_configuration():
+    input = '../configuration/readline'
+    output = path_user
+
+    files = [
+        {'input_path': input, 'output_path': output, 'file_name': '.inputrc'},
+    ]
+
+    copy_files(files)
+
+
 def set_bash_configuration():
     input = '../configuration/bash'
     output = path_user
@@ -149,6 +161,7 @@ def set_backlight_rule(rule_name):
 
     copy_files(files)
 
+
 def set_zsa_rule():
     input = '../configuration/rules'
     output = '/etc/udev/rules.d'
@@ -158,6 +171,7 @@ def set_zsa_rule():
     ]
 
     copy_files(files)
+
 
 def set_nrf_rule():
     input = '../configuration/rules'
@@ -169,6 +183,7 @@ def set_nrf_rule():
     ]
 
     copy_files(files)
+
 
 if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
     log(f'Applying sddm {selection} configuration')
@@ -209,3 +224,7 @@ if select('Apply rofi configuration?'):
 if select('Apply bash configuration?'):
     log('Applying bash configuration')
     set_bash_configuration()
+
+if select('Apply readline configuration?'):
+    log('Applying readline configuration')
+    set_readline_configuration()
