@@ -51,6 +51,7 @@ packages = [
     'rustup',
     'samba',
     'sddm',
+    'tectonic',
     'texlive',
     'texlive-langgerman',
     'tigervnc',
