@@ -13,6 +13,8 @@ PATH=$PATH:~/version-control/arch-linux-scripts
 PATH=$PATH:~/bin
 
 export EDITOR="/usr/bin/nvim"
+export MANPAGER="nvim +Man!"
+export MANWIDTH=100
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
