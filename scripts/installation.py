@@ -83,8 +83,8 @@ packages_aur = [
     'ttf-google-thai',
     'ttf-khmer',
     'ttf-lao',
+    'ttf-ms-fonts',
     'ttf-sil-padauk',
-    'ttf-times-new-roman',
     'zsa-keymapp-bin',
 ]
 packages_bluetooth = [
