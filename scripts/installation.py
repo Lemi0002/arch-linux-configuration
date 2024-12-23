@@ -78,7 +78,6 @@ packages = [
 packages_aur = [
     'google-chrome',
     'gtkterm',
-    'sddm-sugar-candy-git',
     'sddm-sugar-dark',
     'ttf-google-thai',
     'ttf-khmer',

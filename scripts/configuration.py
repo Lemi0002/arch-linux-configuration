@@ -1,6 +1,5 @@
 '''
-Script used for configuring all essential packages. SUDO privileges are required for some configurations.
-If privileges are not required SUDO must not be used.
+Script used for configuring all essential packages.
 '''
 
 import os
@@ -93,11 +92,11 @@ def make_files_executable(files):
         subprocess.run(['chmod', '+x', file])
 
 
-def set_sddm_configuration(theme_name):
+def set_sddm_configuration():
     sddm_input = prepend_script_directory('../configuration/sddm')
     sddm_output = '/etc/sddm.conf.d'
-    theme_input = prepend_script_directory(os.path.join('../configuration/sddm', theme_name))
-    theme_output = os.path.join('/usr/share/sddm/themes', theme_name)
+    theme_input = prepend_script_directory('../configuration/sddm/sugar-dark')
+    theme_output = '/usr/share/sddm/themes/sugar-dark'
     background_input = theme_input
     background_output = os.path.join(theme_output, 'Backgrounds')
 
@@ -108,8 +107,6 @@ def set_sddm_configuration(theme_name):
     ]
 
     link_files(files)
-    file = os.path.join(files[0]['output_path'], files[0]['file_name'])
-    edit_file(file, theme_name, 'Current=')
 
 
 def set_xorg_configuration():
@@ -243,13 +240,13 @@ def set_quartus_rule():
     link_files(files)
 
 
-if selection := choose('Choose sddm configuration to apply. SUDO is required.', ['sugar-candy', 'sugar-dark']):
-    log(f'Applying sddm {selection} configuration')
-    set_sddm_configuration(selection)
-
 if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
     log(f'Applying {selection} rule')
     set_backlight_rule(selection)
+
+if select('Apply sddm configuration?'):
+    log('Applying sddm configuration')
+    set_sddm_configuration()
 
 if select('Apply xorg configuration? SUDO is required.'):
     log('Applying xorg configuration')
