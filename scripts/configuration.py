@@ -43,7 +43,11 @@ def copy_files(files):
         if os.path.isfile(file_output):
             log(f'Overriding file "{file_output}" as it already exists')
 
-        subprocess.run(['cp', file_input, file_output])
+        command = ['cp', file_input, file_output]
+        if not os.access(output_path, os.W_OK):
+            command.insert(0, 'sudo')
+
+        subprocess.run(command)
 
 
 def link_files(files):
@@ -70,7 +74,11 @@ def link_files(files):
             log(f'Skipping to link file as "{file_output}" already exists')
             return
 
-        subprocess.run(['ln', '-s', file_input, file_name], cwd=output_path)
+        command = ['ln', '-s', file_input, file_name]
+        if not os.access(output_path, os.W_OK):
+            command.insert(0, 'sudo')
+
+        subprocess.run(command, cwd=output_path)
 
 
 def edit_file(file_name, text, key):
@@ -89,7 +97,11 @@ def edit_file(file_name, text, key):
 
 def make_files_executable(files):
     for file in files:
-        subprocess.run(['chmod', '+x', file])
+        command = ['chmod', '+x', file]
+        if not os.access(file, os.W_OK):
+            command.insert(0, 'sudo')
+
+        subprocess.run(command)
 
 
 def set_sddm_configuration():
@@ -240,7 +252,7 @@ def set_quartus_rule():
     link_files(files)
 
 
-if selection := choose('Choose backlight rule to apply. SUDO is required.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
+if selection := choose('Choose backlight rule to apply.', ['10-backlight.intel.rules', '10-backlight.acpi.rules']):
     log(f'Applying {selection} rule')
     set_backlight_rule(selection)
 
@@ -248,19 +260,19 @@ if select('Apply sddm configuration?'):
     log('Applying sddm configuration')
     set_sddm_configuration()
 
-if select('Apply xorg configuration? SUDO is required.'):
+if select('Apply xorg configuration?'):
     log('Applying xorg configuration')
     set_xorg_configuration()
 
-if select('Apply zsa rules? SUDO is required.'):
+if select('Apply zsa rules?'):
     log('Applying zsa configuration')
     set_zsa_rule()
 
-if select('Apply nrf rules? SUDO is required.'):
+if select('Apply nrf rules?'):
     log('Applying nrf configuration')
     set_nrf_rule()
 
-if select('Apply quartus rules? SUDO is required.'):
+if select('Apply quartus rules?'):
     log('Applying quartus configuration')
     set_quartus_rule()
 
