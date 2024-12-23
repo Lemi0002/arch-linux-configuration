@@ -112,7 +112,11 @@ def link_files(files):
 
 def remove_file(file):
     command = ['rm', file]
-    if not os.access(file, os.W_OK):
-        command.insert(0, 'sudo')
+    if os.path.islink(file):
+        if not os.access(os.path.dirname(file), os.W_OK):
+            command.insert(0, 'sudo')
+    else:
+        if not os.access(file, os.W_OK):
+            command.insert(0, 'sudo')
 
     subprocess.run(command)
