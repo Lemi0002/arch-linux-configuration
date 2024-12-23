@@ -129,7 +129,7 @@ if select('Install snapd?'):
     subprocess.run(['sudo', 'systemctl', 'enable', '--now', 'snapd.apparmor'])
 
 if select('Install snap packages? Requires reboot after snapd was installed'):
-    log('Installing snap packages?')
+    log('Installing snap packages')
     subprocess.run([*command_snap, *packages_snap])
 
 if select('Install repositories?'):
