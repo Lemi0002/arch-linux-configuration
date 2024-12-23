@@ -41,7 +41,9 @@ def copy_files(files):
             os.makedirs(output_path)
 
         if os.path.isfile(file_output):
-            log(f'Overriding file "{file_output}" as it already exists')
+            if not select(f'Continue to override file as "{file_output}" already exists?'):
+                log(f'Skipping to override file as "{file_output}" already exists')
+                return
 
         command = ['cp', file_input, file_output]
         if not os.access(output_path, os.W_OK):
@@ -71,8 +73,11 @@ def link_files(files):
             os.makedirs(output_path)
 
         if os.path.isfile(file_output):
-            log(f'Skipping to link file as "{file_output}" already exists')
-            return
+            if select(f'Continue to remove file as "{file_output}" already exists?'):
+                remove_file(file_output)
+            else:
+                log(f'Skipping to link file as "{file_output}" already exists')
+                return
 
         command = ['ln', '-s', file_input, file_name]
         if not os.access(output_path, os.W_OK):
@@ -81,27 +86,12 @@ def link_files(files):
         subprocess.run(command, cwd=output_path)
 
 
-def edit_file(file_name, text, key):
-    lines = None
+def remove_file(file):
+    command = ['rm', file]
+    if not os.access(file, os.W_OK):
+        command.insert(0, 'sudo')
 
-    with open(file_name, 'r') as file:
-        lines = file.readlines()
-
-    for i, line in enumerate(lines):
-        if key != None and key in line:
-            lines[i] = ''.join([key, text])
-
-    with open(file_name, 'w') as file:
-        file.writelines(lines)
-
-
-def make_files_executable(files):
-    for file in files:
-        command = ['chmod', '+x', file]
-        if not os.access(file, os.W_OK):
-            command.insert(0, 'sudo')
-
-        subprocess.run(command)
+    subprocess.run(command)
 
 
 def set_sddm_configuration():
@@ -136,7 +126,6 @@ def set_xorg_configuration():
     ]
 
     link_files(files)
-    make_files_executable([os.path.join(x['output_path'], x['file_name']) for x in files if x['file_name'].endswith('.sh')])
 
 
 def set_alacritty_configuration():
