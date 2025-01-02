@@ -2,6 +2,9 @@ configuration {
     dpi: 192;
     font: "FiraCodeNerdFont 10";
     combi-modes: [ window, drun, ssh ];
+    kb-primary-paste: "";
+    kb-secondary-copy: "Control+C";
+    kb-secondary-paste: "Control+V";
     kb-cancel: "Escape,Control+c";
 }
 
