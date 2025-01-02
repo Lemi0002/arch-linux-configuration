@@ -69,6 +69,8 @@ def copy_files(files):
                 log(f'Skipping to override file as "{file_output}" already exists')
                 return
 
+        remove_file(file_output)
+
         command = ['cp', file_input, file_output]
         if not os.access(output_path, os.W_OK):
             command.insert(0, 'sudo')
@@ -97,13 +99,11 @@ def link_files(files):
             os.makedirs(output_path)
 
         if os.path.isfile(file_output):
-            if select(f'Continue to remove file as "{file_output}" already exists?'):
-                remove_file(file_output)
-            else:
+            if not select(f'Continue to remove file as "{file_output}" already exists?'):
                 log(f'Skipping to link file as "{file_output}" already exists')
                 return
 
-        command = ['ln', '-s', file_input, file_name]
+        command = ['ln', '-sf', file_input, file_name]
         if not os.access(output_path, os.W_OK):
             command.insert(0, 'sudo')
 
@@ -113,6 +113,9 @@ def link_files(files):
 def remove_file(file):
     command = ['rm', file]
     if os.path.islink(file):
+        if not os.access(os.path.dirname(file), os.W_OK):
+            command.insert(0, 'sudo')
+    elif os.stat(file).st_nlink > 1:
         if not os.access(os.path.dirname(file), os.W_OK):
             command.insert(0, 'sudo')
     else:
