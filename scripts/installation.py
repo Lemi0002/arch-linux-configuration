@@ -56,6 +56,7 @@ packages = [
     'rustup',
     'samba',
     'sddm',
+    'strace',
     'tectonic',
     'texlive',
     'texlive-langgerman',
