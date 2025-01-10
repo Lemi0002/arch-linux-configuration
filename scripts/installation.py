@@ -96,7 +96,9 @@ packages_snap = [
     'nordpass',
 ]
 repositories = [
+    {'url': 'https://github.com/Lemi0002/awesomewm-configuration', 'path': '~/.config/awesome'},
     {'url': 'https://github.com/Lemi0002/nvim-configuration', 'path': '~/.config/nvim'},
+    {'url': 'https://github.com/Lemi0002/yazi-configuration', 'path': '~/.config/yazi'},
     {'url': 'https://gitlab.com/dwt1/wallpapers', 'path': '~/version-control/wallpapers-dwt'},
 ]
 
