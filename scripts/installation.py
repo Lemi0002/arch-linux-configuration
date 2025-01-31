@@ -67,7 +67,6 @@ packages = [
     'ttf-firacode-nerd',
     'ttf-indic-otf',
     'unzip',
-    'vainfo',
     'vlc',
     'wget',
     'wl-clipboard',
