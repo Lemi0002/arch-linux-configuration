@@ -63,7 +63,10 @@ def copy_files(files):
             return
 
         if not os.path.isdir(output_path):
-            os.makedirs(output_path)
+            command = ['mkdir', output_path]
+            if not os.access(output_path, os.W_OK):
+                command.insert(0, 'sudo')
+            subprocess.run(command)
 
         if os.path.isfile(file_output):
             if not select(f'Continue to override file as "{file_output}" already exists?'):
