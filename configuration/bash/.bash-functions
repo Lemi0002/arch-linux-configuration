@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function search() {
+    script_name="${BASH_SOURCE[0]}"
+    functions=$(rg "^function ([a-zA-Z-_0-9]+).*$" -or '$1' $script_name | sort)
+
+    function_selected=$(printf "$functions" | fzf --info=inline-right --header="Select function")
+    if [ -z "$function_selected" ]; then
+        exit 1
+    fi
+
+    $function_selected
+}
+
 function jump() {
     directory=$(fzf --info=inline-right --walker=dir,hidden)
 
@@ -8,4 +20,37 @@ function jump() {
     fi
 
     cd $directory
+}
+
+function python-activate() {
+    environment_configuration_name="pyvenv.cfg"
+    environment_paths=("$HOME/python-environments")
+
+    files=()
+    for environment_path in ${environment_paths[@]}; do
+        files_relative=$(cd $environment_path && find -maxdepth 2 -type f -name $environment_configuration_name -printf "%P\n")
+        if [ -z "$files_relative" ]; then
+            continue
+        fi
+
+        files_absolute=()
+        for file in $files_relative; do
+            files_absolute+=("$environment_path/$file")
+        done
+
+        files+=(${files_absolute[@]})
+    done
+
+    file_selected=$(echo ${files[@]} | tr ' ' '\n' | fzf --info=inline-right)
+    if [ -z "$file_selected" ]; then
+        exit 1
+    fi
+
+    source "$(dirname $file_selected)/bin/activate"
+}
+
+function python-deactivate() {
+    if [ "$(type -t deactivate)" = "function" ]; then
+        deactivate
+    fi
 }

@@ -18,4 +18,5 @@ $endif
 
 $if Bash
     Control-x: "search.sh\n"
+    Control-y: "search\n"
 $endif
