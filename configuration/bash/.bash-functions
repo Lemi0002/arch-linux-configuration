@@ -6,7 +6,7 @@ function search() {
 
     function_selected=$(printf "$functions" | fzf --info=inline-right --header="Select function")
     if [ -z "$function_selected" ]; then
-        exit 1
+        return 1
     fi
 
     $function_selected
