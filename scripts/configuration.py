@@ -57,6 +57,15 @@ def set_kitty_configuration():
     ])
 
 
+def set_tmux_configuration():
+    input = prepend_script_directory('../configuration/tmux')
+    output = prepend_user_directory('.config/tmux')
+
+    link_files([
+        {'input_path': input, 'output_path': output, 'file_name': 'tmux.conf'},
+    ])
+
+
 def set_picom_configuration():
     input = prepend_script_directory('../configuration/picom')
     output = prepend_user_directory('.config/picom')
@@ -163,6 +172,10 @@ if select('Apply alacritty configuration?'):
 if select('Apply kitty configuration?'):
     log('Applying kitty configuration')
     set_kitty_configuration()
+
+if select('Apply tmux configuration?'):
+    log('Applying tmux configuration')
+    set_tmux_configuration()
 
 if select('Apply picom configuration?'):
     log('Applying picom configuration')
