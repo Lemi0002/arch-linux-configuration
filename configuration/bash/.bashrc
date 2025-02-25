@@ -28,6 +28,7 @@ export MANWIDTH=100
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export PYTHON_BASIC_REPL=1
 
 source ~/.bash-aliases
 source ~/.bash-functions
