@@ -29,6 +29,7 @@ packages = [
     'intel-gpu-tools',
     'intel-media-driver',
     'kitty',
+    'libreoffice',
     'libxcrypt-compat',
     'man-pages',
     'neofetch',
