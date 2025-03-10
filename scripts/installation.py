@@ -79,6 +79,7 @@ packages = [
 ]
 packages_aur = [
     'google-chrome',
+    'gowall',
     'gtkterm',
     'sddm-sugar-dark',
     'ttf-google-thai',
