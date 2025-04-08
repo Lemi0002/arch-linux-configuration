@@ -30,6 +30,7 @@ packages = [
     'inkscape',
     'intel-gpu-tools',
     'intel-media-driver',
+    'keepassxc',
     'kitty',
     'libreoffice',
     'libxcrypt-compat',
