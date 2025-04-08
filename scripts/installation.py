@@ -13,6 +13,8 @@ packages = [
     'alacritty',
     'awesome',
     'cmake',
+    'docker',
+    'docker-compose',
     'dosfstools',
     'fcitx5-configtool',
     'fcitx5-im',
