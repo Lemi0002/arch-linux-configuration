@@ -99,7 +99,6 @@ packages_bluetooth = [
     'pulseaudio-bluetooth',
 ]
 packages_snap = [
-    'nordpass',
 ]
 repositories = [
     {'url': 'https://github.com/Lemi0002/awesomewm-configuration', 'path': '~/.config/awesome'},
