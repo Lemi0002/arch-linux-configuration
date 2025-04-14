@@ -85,6 +85,7 @@ packages_aur = [
     'gowall',
     'gtkterm',
     'sddm-sugar-dark',
+    'synology-drive',
     'ttf-google-thai',
     'ttf-khmer',
     'ttf-lao',
