@@ -18,6 +18,7 @@ alias gicv='git commit -v'
 alias s='sudo'
 alias sr='sudo !!'
 alias n='nvim'
+alias py='python'
 alias sn='sudo -E nvim'
 alias j='jump'
 
