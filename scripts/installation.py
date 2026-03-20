@@ -56,9 +56,11 @@ packages = [
     'openssh',
     'otf-font-awesome',
     'picom',
+    'pipewire',
+    'pipewire-audio',
+    'pipewire-docs',
+    'pipewire-pulse',
     'playerctl',
-    'pulseaudio',
-    'pulseaudio-alsa',
     'python-dbus',
     'python-pip',
     'qemu-base',
@@ -80,6 +82,7 @@ packages = [
     'vlc',
     'waybar',
     'wget',
+    'wireplumber',
     'wl-clipboard',
     'xclip',
     'xorg',
@@ -102,7 +105,6 @@ packages_aur = [
 packages_bluetooth = [
     'bluez',
     'bluez-utils',
-    'pulseaudio-bluetooth',
 ]
 packages_snap = [
 ]
