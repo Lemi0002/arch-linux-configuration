@@ -73,6 +73,7 @@ packages = [
     'strace',
     'tectonic',
     'tigervnc',
+    'tmux',
     'tree',
     'tree-sitter-cli',
     'ttf-firacode-nerd',
