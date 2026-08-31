@@ -79,7 +79,6 @@ packages = [
     'ttf-firacode-nerd',
     'ttf-indic-otf',
     'unzip',
-    'vimiv',
     'vlc',
     'waybar',
     'wget',
