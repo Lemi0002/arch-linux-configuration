@@ -93,6 +93,15 @@ def set_readline_configuration():
     ])
 
 
+def set_keyd_configuration():
+    input = prepend_script_directory('../configuration/keyd')
+    output = '/etc/keyd'
+
+    copy_files([
+        {'input_path': input, 'output_path': output, 'file_name': 'default.conf'},
+    ])
+
+
 def set_bash_configuration():
     input = prepend_script_directory('../configuration/bash')
     output = prepend_user_directory('')
@@ -192,3 +201,7 @@ if select('Apply bash configuration?'):
 if select('Apply readline configuration?'):
     log('Applying readline configuration')
     set_readline_configuration()
+
+if select('Apply keyd configuration?'):
+    log('Applying keyd configuration')
+    set_keyd_configuration()

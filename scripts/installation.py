@@ -35,6 +35,7 @@ packages = [
     'intel-gpu-tools',
     'intel-media-driver',
     'keepassxc',
+    'keyd',
     'kicad',
     'kicad-library',
     'kicad-library-3d',
