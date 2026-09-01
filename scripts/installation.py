@@ -70,6 +70,7 @@ packages = [
     'rustup',
     'samba',
     'sddm',
+    'shellcheck'
     'strace',
     'tectonic',
     'tigervnc',
