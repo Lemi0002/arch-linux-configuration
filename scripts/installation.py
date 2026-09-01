@@ -71,8 +71,10 @@ packages = [
     'samba',
     'sddm',
     'shellcheck'
+    'spotify-launcher',
     'strace',
     'tectonic',
+    'thunar',
     'tigervnc',
     'tmux',
     'tree',
