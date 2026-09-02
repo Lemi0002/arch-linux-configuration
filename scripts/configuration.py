@@ -99,6 +99,7 @@ def set_keyd_configuration():
 
     copy_files([
         {'input_path': input, 'output_path': output, 'file_name': 'default.conf'},
+        {'input_path': input, 'output_path': output, 'file_name': 'zsa.conf'},
     ])
 
 
