@@ -75,6 +75,8 @@ packages = [
     'spotify-launcher',
     'strace',
     'tectonic',
+    'texlive-bin',
+    'texlive-binextra',
     'thunar',
     'tigervnc',
     'tmux',
